@@ -38,9 +38,9 @@
               <p><strong>Favorite Bose Product: </strong><%= draftee.fav_bose_product %></p>   
               <% if current_user %>
           <% if draftee.drafted && draftee.user_id == current_user.id %>
-            <%= link_to "Undraft!", undraft_path(id:draftee.id, user_id:current_user.id), class: "btn btn-danger", method: :post %> 
+            <%= link_to "Undraft!", undraft_path(id:draftee.id, user_id:current_user.id), class: "btn btn-danger btn-lg", method: :post %> 
           <% elsif !draftee.drafted %>
-           <%= link_to "Draft!", draft_path(id:draftee.id, user_id:current_user.id), class: "btn btn-primary", method: :post%>
+           <%= link_to "Draft!", draft_path(id:draftee.id, user_id:current_user.id), class: "btn btn-primary btn-lg", method: :post%>
           <% else %>
           <p>Drafted by <strong><%= draftee.user.name %></strong></p>
           <% end %>

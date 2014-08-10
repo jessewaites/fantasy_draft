@@ -1,0 +1,52 @@
+<%= form_for @draftee, :html => { :class => 'form-horizontal form-model' } do |f| %>
+  <div class="form-group">
+    <%= f.label :fan_name, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :fan_name, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :img_url, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :img_url, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :fav_team, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :fav_team, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :why_draft_me, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_area :why_draft_me, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :fav_bose_product, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :fav_bose_product, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :user_id, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.number_field :user_id, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :fan_score, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.number_field :fan_score, :class => 'text-field form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  draftees_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+<% end %>

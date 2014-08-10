@@ -1,9 +1,12 @@
+<div>
 <%= image_tag("http://4.bp.blogspot.com/-STszJS8G3Io/T2svBaWzSeI/AAAAAAAAALo/RuXa462URCY/s640/nfl-logo.jpg") %>
+</div>
 <% if current_user %>
   Hi there, <%= current_user.name %>. You have currently drafted 
   <%= pluralize(current_user.draftees.count, "player") %>.
 <% end %>  
 
+<div>
 <% @draftees.each do |draftee| %>
 <div class="container">
     <div class="row">
@@ -45,4 +48,5 @@
         </div>
       </div>
     <% end %>
+</div>    
 <hr>

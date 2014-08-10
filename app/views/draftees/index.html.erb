@@ -1,10 +1,12 @@
-<div class="lead_text">  
-<% if current_user %>
+<div class="container">     
+    <div class="span12">      
+        <% if current_user %>
 <hr>
   <h3>Hi there, <%= current_user.name %>. You have currently drafted 
   <%= pluralize(current_user.draftees.count, "player") %>.</h3>
 <% end %>
 <hr>
+    </div> 
 </div>
 
 <div>

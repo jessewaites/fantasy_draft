@@ -1,11 +1,11 @@
 <div class="container">     
     <div class="span12">      
         <% if current_user %>
-<hr>
-  <h3>Hi there, <%= current_user.name %>. You have currently drafted 
-  <%= pluralize(current_user.draftees.count, "player") %>.</h3>
-<% end %>
-<hr>
+          <hr>
+            <h3>Hi there, <%= current_user.name %>. You have currently drafted 
+            <%= pluralize(current_user.draftees.count, "player") %>.</h3>
+        <% end %>
+          <hr>
     </div> 
 </div>
 
@@ -38,11 +38,11 @@
               <p><strong>Favorite Bose Product: </strong><%= draftee.fav_bose_product %></p>   
               <% if current_user %>
           <% if draftee.drafted && draftee.user_id == current_user.id %>
-            <%= button_to "Undraft", undraft_path(id:draftee.id, user_id:current_user.id, :class => "btn-primary btn") %> 
+            <%= link_to "Undraft!", undraft_path(id:draftee.id, user_id:current_user.id), class: "btn btn-danger", method: :post %> 
           <% elsif !draftee.drafted %>
-           <%= button_to "Draft", draft_path(id:draftee.id, user_id:current_user.id) %>
+           <%= link_to "Draft!", draft_path(id:draftee.id, user_id:current_user.id), class: "btn btn-primary", method: :post%>
           <% else %>
-          <p>Drafted</p>
+          <p>Drafted by <strong><%= draftee.user.name %></strong></p>
           <% end %>
         <% end %>
 

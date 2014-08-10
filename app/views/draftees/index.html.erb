@@ -1,55 +1,44 @@
-<%- model_class = Draftee -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => Draftee %></h1>
-</div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th><%= model_class.human_attribute_name(:fan_name) %></th>
-      <th><%= model_class.human_attribute_name(:img_url) %></th>
-      <th><%= model_class.human_attribute_name(:fav_team) %></th>
-      <th><%= model_class.human_attribute_name(:why_draft_me) %></th>
-      <th><%= model_class.human_attribute_name(:fav_bose_product) %></th>
-      <th><%= model_class.human_attribute_name(:user_id) %></th>
-      <th><%= model_class.human_attribute_name(:fan_score) %></th>
-      <th><%= model_class.human_attribute_name(:drafted) %></th>
+<%= image_tag("http://4.bp.blogspot.com/-STszJS8G3Io/T2svBaWzSeI/AAAAAAAAALo/RuXa462URCY/s640/nfl-logo.jpg") %>
 
-
-      <% if false %>
-      <!-- <th><%= model_class.human_attribute_name(:created_at) %></th> -->
-      <!-- <th><%=t '.actions', :default => t("helpers.actions") %></th> -->
-      <% end %>
-
-    </tr>
-  </thead>
-  <tbody>
-    <% @draftees.each do |draftee| %>
-      <tr>
-        <td><%= draftee.id %></td>
-        <td><%= draftee.fan_name %></td>
-        <td><%= image_tag(draftee.img_url) %></td>
-        <td><%= draftee.fav_team %></td>
-        <td><%= draftee.why_draft_me %></td>
-        <td><%= draftee.fav_bose_product %></td>
-        <td><%= draftee.user_id %></td>
-        <td><%= draftee.fan_score %></td>
-        <% if current_user %>
-
-          <% if draftee.drafted && draftee.user_id == current_user.id %>
-            <td><%= link_to "Undraft", undraft_path(id:draftee.id, user_id:current_user.id) %></td>
-          <% elsif !draftee.drafted %>
-            <td><%= link_to "Draft", draft_path(id:draftee.id, user_id:current_user.id) %></td>
+<% @draftees.each do |draftee| %>
+<div class="container">
+    <div class="row">
+      <div class="[ col-sm-6 col-md-offset-2 col-md-4 ]">
+        <div class="[ info-card ]">
+          <% if draftee.drafted? %>
+            <%= image_tag("http://i.imgur.com/1KTiYQV.png", :style => "width: 100%") %>
           <% else %>
-          <td><p>Drafted</p></td>
+            <%= image_tag(draftee.img_url, :style => "width: 100%") %>
+          <% end %>
+          <div class="[ info-card-details ] animate">
+            <div class="[ info-card-header ]">
+              <h1><%= draftee.fan_name %></h1>
+              <h3>Favorite Team: <%= draftee.fav_team %></h3>
+              <h3><span class="fa fa-star"></span>  Fan Score: <%= draftee.fan_score %></h3>
+              <% if !draftee.drafted? %>
+              <%= image_tag("http://www.genesbmx.com/FreeAgent.jpg", :style => "width: 100%") %>
+              <% end %>
+              <% if draftee.drafted? %>
+                 <p>Drafted by <strong><%= draftee.user.name %></strong></p>
+              <% end %>
+            </div>
+            <div class="[ info-card-detail ]">
+              <!-- Description -->
+              <p><%= draftee.why_draft_me %></p>
+              <p><strong>Favorite Bose Product: </strong><%= draftee.fav_bose_product %></p>   
+              <% if current_user %>
+          <% if draftee.drafted && draftee.user_id == current_user.id %>
+            <%= button_to "Undraft", undraft_path(id:draftee.id, user_id:current_user.id, :class => "btn-primary btn") %> 
+          <% elsif !draftee.drafted %>
+           <%= button_to "Draft", draft_path(id:draftee.id, user_id:current_user.id) %>
+          <% else %>
+          <p>Drafted</p>
           <% end %>
         <% end %>
 
-      </tr>
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
-
-<% if current_user && current_user.admin? %>
-  <%= link_to t('.new', :default => t("helpers.links.new")), new_draftee_path, :class => 'btn btn-primary' %>
-<% end %>
+<hr>

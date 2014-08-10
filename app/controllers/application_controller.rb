@@ -1,6 +1,14 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  before_filter :configure_devise_params, if: :devise_controller?
+
+  def configure_devise_params
+    devise_parameter_sanitizer.for(:sign_up) do |u|
+      u.permit(:name, :email, :password, :password_confirmation)
+    end
+  end
+
   def no_route_redirect
     flash[:alert] = "That is not a valid page."
     redirect_to root_path

@@ -4,8 +4,13 @@
           <hr>
             <h3>Hi there, <%= current_user.name %>. You have currently drafted 
             <%= pluralize(current_user.draftees.count, "player") %>.</h3>
-        <% end %>
           <hr>
+        <% end %>
+        <% if current_user && current_user.admin? %>
+          <hr>
+          <%= link_to "Add New Draftee", new_draftee_path, class: "btn btn-danger btn-lg" %>
+        <% end %>
+        <hr>
     </div> 
 </div>
 

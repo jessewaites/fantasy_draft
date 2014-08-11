@@ -46,7 +46,7 @@
           <% end %>
           <% if current_user.admin? %>
           <div>
-          <%= link_to '<i class="fa fa-trash-o fa-2x"></i>'.html_safe, draftee_path(draftee), method: :delete %>
+          <%= link_to '<i class="fa fa-trash-o fa-2x"></i>'.html_safe, draftee_path(draftee), method: :delete, data: { confirm: "Are you sure you want to delete this draftee?"} %>
           <%= link_to '<i class="fa fa-pencil-square-o fa-2x"></i>'.html_safe, draftee_path(draftee) %>
           <% end %>
         </div>

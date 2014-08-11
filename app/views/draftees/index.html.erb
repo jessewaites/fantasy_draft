@@ -44,6 +44,12 @@
           <% else %>
           <p>Drafted by <strong><%= draftee.user.name %></strong></p>
           <% end %>
+          <% if current_user.admin? %>
+          <div>
+          <%= link_to '<i class="fa fa-trash-o fa-2x"></i>'.html_safe, draftee_path(draftee), method: :delete %>
+          <%= link_to '<i class="fa fa-pencil-square-o fa-2x"></i>'.html_safe, draftee_path(draftee) %>
+          <% end %>
+        </div>
         <% end %>
 
             </div>

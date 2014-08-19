@@ -74,6 +74,6 @@ Rails.application.routes.draw do
     get    "account" => "users/registrations#edit",   as: :edit_user_registration
   end
 
-  get '*unmatched_route', :to => 'application#no_route_redirect'
+  #get '*unmatched_route', :to => 'application#no_route_redirect'
 
 end

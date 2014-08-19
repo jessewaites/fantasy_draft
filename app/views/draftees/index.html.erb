@@ -20,27 +20,21 @@
     <div class="row">
       <div class="[ col-sm-6 col-md-offset-2 col-md-4 ]">
         <div class="[ info-card ]">
-          <% if draftee.drafted? %>
-            <%= image_tag("http://i.imgur.com/1KTiYQV.png", :style => "width: 100%") %>
-          <% else %>
             <%= image_tag(draftee.img_url, :style => "width: 100%") %>
-          <% end %>
           <div class="[ info-card-details ] animate">
             <div class="[ info-card-header ]">
               <h1><%= draftee.fan_name %></h1>
-              <h3>Favorite Team: <%= draftee.fav_team %></h3>
-              <h3><span class="fa fa-star"></span>  Fan Score: <%= draftee.fan_score %></h3>
-              <% if !draftee.drafted? %>
-              <%= image_tag("http://www.genesbmx.com/FreeAgent.jpg", :style => "width: 100%") %>
-              <% end %>
-              <% if draftee.drafted? %>
-                 <p>Drafted by <strong><%= draftee.user.name %></strong></p>
-              <% end %>
+              <p><strong>Fan Score:</strong></p>
+              <p><%= draftee.fan_score %></p>
+              <p><strong>Favorite NFL Team:</strong></p>
+              <p><%= draftee.fav_team %></p>
+              <p><strong>Favorite Bose Product:</strong></p>
+              <p><%= draftee.fav_bose_product %></p>
+              <p><strong>Why Draft Me?</strong></p>
+              <p><%= draftee.fav_bose_product %></p>
             </div>
             <div class="[ info-card-detail ]">
-              <!-- Description -->
-              <p><%= draftee.why_draft_me %></p>
-              <p><strong>Favorite Bose Product: </strong><%= draftee.fav_bose_product %></p>   
+              <!-- Description -->  
               <% if current_user %>
           <% if draftee.drafted && draftee.user_id == current_user.id %>
             <%= link_to "Undraft!", undraft_path(id:draftee.id, user_id:current_user.id), class: "btn btn-danger btn-lg", method: :post %> 
@@ -57,7 +51,6 @@
           <% end %>
         </div>
         <% end %>
-
             </div>
           </div>
         </div>

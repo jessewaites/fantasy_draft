@@ -38,7 +38,7 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'bundler'
-
+gem 'high_voltage', '~> 2.2.1'
 gem 'tzinfo-data'
 gem 'validates_formatting_of'
 gem 'bootstrap-sass', github: 'twbs/bootstrap-sass'

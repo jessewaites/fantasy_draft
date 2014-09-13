@@ -69,7 +69,8 @@
                   <h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h1>
                   <p>Etiam at ligula sit amet arcu laoreet consequat. Duis dictum lorem metus, vitae dapibus risus imperdiet nec. Suspendisse molestie lorem odio, sit amet. </p>
                   <!-- to add scrolling effects to links linking to same page section, add .link-scroll class -->
-                  <p><a href="#text" class="link-scroll btn btn-outline-inverse btn-lg">find out more</a></p>
+                  
+                  <%= link_to "See Draftees", draftees_path, :class => "link-scroll btn btn-outline-inverse btn-lg" %>
                 </section>
 
               <!-- End: Section content to edit -->
@@ -92,14 +93,14 @@
              - Link to the social page in href of <a>
              - social icon in the <img> - a list of social icons options are found in the directory assets/images/theme_images/social_icons/ -->
         <ul class="social-icons">
-          <li><a href="#" target="_blank" title="Facebook"><img src="assets/images/theme_images/social_icons/facebook.png" alt="Facebook"></a></li>
-          <li><a href="#" target="_blank" title="Twitter"><img src="assets/images/theme_images/social_icons/twitter.png" alt="Twitter"></a></li>
-          <li><a href="#" target="_blank" title="Google+"><img src="assets/images/theme_images/social_icons/googleplus.png" alt="Google+"></a></li>
+          <li><%= image_tag("twitter.png") %></li>
+          <li><%= image_tag("facebook.png") %></li>
+          <li><%= image_tag("googleplus.png") %></li>
         </ul>
         <!-- ==================== END: Social Icons ==================== -->
 
         <!-- copyright text -->
-        <div class="footer-text-line">&copy; 2014 Twilli | Air</div>
+        <div class="footer-text-line">&copy; 2014 Bose | NFL</div>
       </section>
       <!-- end: Footer -->      
 
